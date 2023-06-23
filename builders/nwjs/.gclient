@@ -1,7 +1,7 @@
 solutions = [
     {
         "name": 'src',
-        "url": 'https: //github.com/nwjs/chromium.src.git',
+        "url": 'https://github.com/nwjs/chromium.src.git',
         "deps_file": 'DEPS',
         "managed": True,
         "custom_deps": {
