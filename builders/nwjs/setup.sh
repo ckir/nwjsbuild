@@ -8,7 +8,7 @@ echo "Installed packages updated"
 
 set -x
 cd /Build
-git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
+git clone -q https://chromium.googlesource.com/chromium/tools/depot_tools.git
 export PATH=/Build/depot_tools:$PATH
 mkdir -p nwjs/src/content nwjs/src/third_party nwjs/src/v8
 cd nwjs
