@@ -13,6 +13,8 @@ RUN apt-get -qq update > /dev/null \
     awscli \
     dpkg-dev \
     html2text \
+    git \
+    git-extras \
     devscripts > /dev/null
 COPY ./setup.sh /opt/src/scripts/setup.sh
 RUN mkdir /Build /Release && chmod +x /opt/src/scripts/setup.sh
