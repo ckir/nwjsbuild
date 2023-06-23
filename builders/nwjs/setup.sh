@@ -21,9 +21,25 @@ git clone -q https://github.com/nwjs/nw.js src/content/nw
 git clone -q https://github.com/nwjs/node src/third_party/node-nw
 git clone -q https://github.com/nwjs/v8 src/v8
 
-gclient sync -D --with_branch_heads --nohooks
+echo "Sync takes very long time. Be patient"
+gclient sync -D --with_branch_heads --nohooks > /dev/null
 ./build/install-build-deps.sh
 
+cd src
+gn gen out/nw --args='is_debug=false is_component_ffmpeg=true target_cpu="x86"'
+
+GYP_CHROMIUM_NO_ACTION=0 ./build/gyp_chromium -I \
+third_party/node-nw/common.gypi -D building_nw=1 \
+-D clang=1 third_party/node-nw/node.gyp
+
+echo "Build nwjs"
+ninja -C out/nw nwjs
+
+echo "Build Node"
+ninja -C out/Release node
+
+echo "Copy the build Node library to the nwjs binary folder"
+ninja -C out/nw copy_node
 
 
 
