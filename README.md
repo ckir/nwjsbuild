@@ -1,0 +1,2 @@
+# nwjsbuild
+Build from source
