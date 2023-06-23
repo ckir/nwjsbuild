@@ -14,9 +14,9 @@ mkdir -p nwjs/src/content nwjs/src/third_party nwjs/src/v8
 cd nwjs
 gclient config --name=src https://github.com/nwjs/chromium.src.git@origin/nw17
 mv ../.gclient .
-git clone https://github.com/nwjs/nw.js src/content/nw
-git clone https://github.com/nwjs/node src/third_party/node-nw
-git clone https://github.com/nwjs/v8 src/v8
+git clone -q https://github.com/nwjs/nw.js src/content/nw
+git clone -q https://github.com/nwjs/node src/third_party/node-nw
+git clone -q https://github.com/nwjs/v8 src/v8
 
 gclient sync --with_branch_heads --nohooks
 ./build/install-build-deps.sh
