@@ -2,7 +2,7 @@ FROM i386/debian:latest
 
 COPY sources.list /etc/apt/sources.list
 RUN apt-get -qq update > /dev/null \
-    && apt-get -qq ca-certificates \
+    && apt-get -qq install -y ca-certificates  > /dev/null \
     && apt-get -qq install -y apt-utils > /dev/null \
     && apt-get -qq install -y \
     build-essential \
