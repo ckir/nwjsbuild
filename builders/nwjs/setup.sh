@@ -11,8 +11,12 @@ cd /Build
 git clone -q https://chromium.googlesource.com/chromium/tools/depot_tools.git
 export PATH=/Build/depot_tools:$PATH
 mkdir -p nwjs/src/content nwjs/src/third_party nwjs/src/v8
+
 cd nwjs
+apt-get -qq install tree >/dev/null
+tree
 gclient config --name=src https://github.com/nwjs/chromium.src.git@origin/nw77
+cat .gclient
 mv ../.gclient .
 git clone -q https://github.com/nwjs/nw.js src/content/nw
 git clone -q https://github.com/nwjs/node src/third_party/node-nw
