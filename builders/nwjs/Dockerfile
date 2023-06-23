@@ -1,9 +1,9 @@
 FROM i386/debian:latest
 
 COPY sources.list /etc/apt/sources.list
-RUN apt-get -qq update \
-    && apt-get install -y apt-utils \
-    && apt-get install -y \
+RUN apt-get -qq update > /dev/null \
+    && apt-get -qq install -y apt-utils > /dev/null \
+    && apt-get -qq install -y \
     build-essential \
     gcc-multilib \
     binutils \
@@ -12,7 +12,7 @@ RUN apt-get -qq update \
     awscli \
     dpkg-dev \
     html2text \
-    devscripts
+    devscripts > /dev/null
 COPY ./setup.sh /opt/src/scripts/setup.sh
 RUN mkdir /Build /Release && chmod +x /opt/src/scripts/setup.sh
 COPY .gclient /Build/
